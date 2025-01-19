@@ -220,6 +220,9 @@ mod tests {
         assert!(parse("a124GB").is_err());
         assert!(parse("1.3 42.0 B").is_err());
         assert!(parse("1.3 ... B").is_err());
+        // The original implementation did not account for the possibility that users may
+        // use whitespace to visually separate digits, thus treat it as an error
+        assert!(parse("1 000 B").is_err());
     }
 
     #[test]
