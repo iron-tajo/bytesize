@@ -218,6 +218,8 @@ mod tests {
 
         assert!(parse("").is_err());
         assert!(parse("a124GB").is_err());
+        assert!(parse("1.3 42.0 B").is_err());
+        assert!(parse("1.3 ... B").is_err());
     }
 
     #[test]
